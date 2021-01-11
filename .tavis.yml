@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t ahmad/travis_test -f Dokcerfile.dev .
+
+script: 
+    - docker run -e CI=true ahmad/travis_test npm run test
+
